@@ -2,7 +2,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "CloudXCore",  // ✅ Matches framework name, NOT repo name
+    name: "CloudXCore", 
     platforms: [
         .iOS(.v14)
     ],

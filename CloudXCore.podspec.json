@@ -1,6 +1,6 @@
 {
   "name": "CloudXCore",
-  "version": "1.0.2",
+  "version": ">=1.0.0",
   "summary": "Mobile SDK for CloudX",
   "description": "Mobile SDK for CloudX iOS",
   "homepage": "https://github.com/cloudx-xenoss/CloudXCoreiOS",
