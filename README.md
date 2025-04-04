@@ -3,7 +3,7 @@
 ## Introduction:
 The CloudX SDK is a powerful tool that helps developers maximize their ad revenue by mediating multiple ad networks. With this SDK, developers can efficiently manage and optimize their ad inventory to ensure they get the highest possible returns.
 
-## Installation options
+## Installation 
 ### Swift Package Manager
 - Install via `https://github.com/cloudx-xenoss/CloudXCoreiOS`
 
