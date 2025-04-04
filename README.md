@@ -15,6 +15,7 @@ The CloudX SDK is a powerful tool that helps developers maximize their ad revenu
 - Open the releases section of this repo https://github.com/cloudx-xenoss/CloudXCoreiOS/releases
 - Download the zip file of the latest release (or whichever is preferred)
 - Drag and drop into your XCode project
+- NOTE: Additional plist entries and/or build settings may need to be added depending on which adapters you would like to use and which SDK features you would like to enable
 
 ## Key Features:
 
