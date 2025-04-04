@@ -8,7 +8,7 @@ The CloudX SDK is a powerful tool that helps developers maximize their ad revenu
 - Install via `https://github.com/cloudx-xenoss/CloudXCoreiOS`
 
 ### Cocoapods 
-- Add `pod CloudXCore` to your Podfile
+- Add `pod 'CloudXCore'` to your Podfile
 - Run `pod install --repo-update`
 
 ### Manual download
