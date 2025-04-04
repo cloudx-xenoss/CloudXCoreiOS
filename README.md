@@ -5,10 +5,7 @@ The CloudX SDK is a powerful tool that helps developers maximize their ad revenu
 
 ## Installation options
 ### Swift Package Manager
-- In XCode got to File -> Add Package Dependencies
-- In the top right search bar add https://github.com/cloudx-xenoss/CloudXCoreiOS
-- Set the desired targets in your project
-- Press 'Add Package'
+- Install via `https://github.com/cloudx-xenoss/CloudXCoreiOS`
 
 ### Cocoapods 
 - Add `pod CloudXCore` to your Podfile
