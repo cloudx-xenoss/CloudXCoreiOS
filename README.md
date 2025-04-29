@@ -20,20 +20,19 @@ The CloudX SDK is a powerful tool that helps developers maximize their ad revenu
 ## Topics
 
 ### Integration Guide:
-(Integration)[https://cloudx-xenoss.github.io/CloudXCoreiOS/documentation/cloudxcore/integration]
+[Integration](https://cloudx-xenoss.github.io/CloudXCoreiOS/documentation/cloudxcore/integration)
 
 ### Ad formats
-
-- <doc:Banner>
-- <doc:Interstitial>
-- <doc:Rewarded>
-- <doc:Native>
+[Banners](https://cloudx-xenoss.github.io/CloudXCoreiOS/documentation/cloudxcore/banner)
+[Interstitials](https://cloudx-xenoss.github.io/CloudXCoreiOS/documentation/cloudxcore/interstitial)
+[Rewarded](https://cloudx-xenoss.github.io/CloudXCoreiOS/documentation/cloudxcore/rewarded)
+[Native](https://cloudx-xenoss.github.io/CloudXCoreiOS/documentation/cloudxcore/native)
 
 ### Adapters
-
-- <doc:AdManagerAdapter>
+[Meta Adapter](https://cloudx-xenoss.github.io/CloudXCoreiOS/documentation/cloudxcore/metaadapter)
+[Demo Adapter](https://cloudx-xenoss.github.io/CloudXCoreiOS/documentation/cloudxcore/demoadapter)
+[Ad Manager Adapter](https://cloudx-xenoss.github.io/CloudXCoreiOS/documentation/cloudxcore/admanageradapter)
+[Mintegral Adapter](https://cloudx-xenoss.github.io/CloudXCoreiOS/documentation/cloudxcore/mintagraladapter)
 
 ## Support
-
-For any technical assistance or inquiries, reach out to our support team at [support email or contact number].
-
+- Please open an issue in this repo [Issues](https://github.com/cloudx-xenoss/CloudXCoreiOS/issues)
