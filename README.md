@@ -23,15 +23,15 @@ The CloudX SDK is a powerful tool that helps developers maximize their ad revenu
 [Integration](https://cloudx-xenoss.github.io/CloudXCoreiOS/documentation/cloudxcore/integration)
 
 ### Ad formats
-[Banners](https://cloudx-xenoss.github.io/CloudXCoreiOS/documentation/cloudxcore/banner)
-[Interstitials](https://cloudx-xenoss.github.io/CloudXCoreiOS/documentation/cloudxcore/interstitial)
-[Rewarded](https://cloudx-xenoss.github.io/CloudXCoreiOS/documentation/cloudxcore/rewarded)
+[Banners](https://cloudx-xenoss.github.io/CloudXCoreiOS/documentation/cloudxcore/banner) | 
+[Interstitials](https://cloudx-xenoss.github.io/CloudXCoreiOS/documentation/cloudxcore/interstitial) | 
+[Rewarded](https://cloudx-xenoss.github.io/CloudXCoreiOS/documentation/cloudxcore/rewarded) | 
 [Native](https://cloudx-xenoss.github.io/CloudXCoreiOS/documentation/cloudxcore/native)
 
 ### Adapters
-[Meta Adapter](https://cloudx-xenoss.github.io/CloudXCoreiOS/documentation/cloudxcore/metaadapter)
-[Demo Adapter](https://cloudx-xenoss.github.io/CloudXCoreiOS/documentation/cloudxcore/demoadapter)
-[Ad Manager Adapter](https://cloudx-xenoss.github.io/CloudXCoreiOS/documentation/cloudxcore/admanageradapter)
+[Meta Adapter](https://cloudx-xenoss.github.io/CloudXCoreiOS/documentation/cloudxcore/metaadapter) | 
+[Demo Adapter](https://cloudx-xenoss.github.io/CloudXCoreiOS/documentation/cloudxcore/demoadapter) | 
+[Ad Manager Adapter](https://cloudx-xenoss.github.io/CloudXCoreiOS/documentation/cloudxcore/admanageradapter) | 
 [Mintegral Adapter](https://cloudx-xenoss.github.io/CloudXCoreiOS/documentation/cloudxcore/mintagraladapter)
 
 ## Support
