@@ -17,7 +17,10 @@ The CloudX SDK is a powerful tool that helps developers maximize their ad revenu
 - Drag and drop into your XCode project
 - NOTE: Additional plist entries and/or build settings may need to be added depending on which adapters you would like to use and which SDK features you would like to enable
 
-## Topics
+## Integration
+
+### Full documentation:
+The full docs can be found here [CloudX iOS Docs](https://cloudx-xenoss.github.io/CloudXCoreiOS/documentation/cloudxcore)
 
 ### Integration Guide:
 [Integration](https://cloudx-xenoss.github.io/CloudXCoreiOS/documentation/cloudxcore/integration)
