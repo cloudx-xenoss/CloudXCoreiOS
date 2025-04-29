@@ -32,7 +32,7 @@ The CloudX SDK is a powerful tool that helps developers maximize their ad revenu
 [Meta Adapter](https://cloudx-xenoss.github.io/CloudXCoreiOS/documentation/cloudxcore/metaadapter) | 
 [Demo Adapter](https://cloudx-xenoss.github.io/CloudXCoreiOS/documentation/cloudxcore/demoadapter) | 
 [Ad Manager Adapter](https://cloudx-xenoss.github.io/CloudXCoreiOS/documentation/cloudxcore/admanageradapter) | 
-[Mintegral Adapter](https://cloudx-xenoss.github.io/CloudXCoreiOS/documentation/cloudxcore/mintagraladapter)
+[Mintegral Adapter](https://cloudx-xenoss.github.io/CloudXCoreiOS/documentation/cloudxcore/mintegraladapter)
 
 ## Support
 - Please open an issue in this repo [Issues](https://github.com/cloudx-xenoss/CloudXCoreiOS/issues)
