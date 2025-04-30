@@ -1,6 +1,6 @@
 {
   "name": "CloudXCore",
-  "version": ">=1.0.0",
+  "version": "1.0.135",
   "summary": "Mobile SDK for CloudX",
   "description": "Mobile SDK for CloudX iOS",
   "homepage": "https://github.com/cloudx-xenoss/CloudXCoreiOS",
@@ -14,10 +14,10 @@
   "platforms": {
     "ios": "13.0"
   },
-  "swift_version": "5.0",
+  "swift_version": "5.10",
   "module_name": "CloudXCore",
   "source": {
-    "http": "https://github.com/cloudx-xenoss/CloudXCoreiOS/releases/latest/download/CloudXCore.xcframework.zip",
+    "http": "https://github.com/cloudx-xenoss/CloudXCoreiOS/releases/download/v1.0.135/CloudXCore.xcframework.zip",
     "type": "zip",
     "flatten": false
   },
@@ -41,6 +41,9 @@
     "SwiftUI",
     "WebKit"
   ],
+  "dependencies": {
+    "Sentry": []
+  },
   "pod_target_xcconfig": {
     "VALID_ARCHS[sdk=iphoneos*]": "arm64 armv7",
     "VALID_ARCHS[sdk=iphonesimulator*]": "x86_64 arm64"
@@ -49,3 +52,4 @@
     "OTHER_LDFLAGS": "-ObjC"
   }
 }
+
