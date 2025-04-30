@@ -1,6 +1,6 @@
 {
   "name": "CloudXCore",
-  "version": "1.0.126",
+  "version": "1.0.127",
   "summary": "Mobile SDK for CloudX",
   "description": "Mobile SDK for CloudX iOS",
   "homepage": "https://github.com/cloudx-xenoss/CloudXCoreiOS",
@@ -17,7 +17,7 @@
   "swift_version": "5.0",
   "module_name": "CloudXCore",
   "source": {
-    "http": "https://github.com/cloudx-xenoss/CloudXCoreiOS/releases/download/1.0.126/CloudXCore.xcframework.zip",
+    "http": "https://github.com/cloudx-xenoss/CloudXCoreiOS/releases/download/1.0.127/CloudXCore.xcframework.zip",
     "type": "zip",
     "flatten": false
   },
