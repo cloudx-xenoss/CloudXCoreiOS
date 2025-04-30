@@ -15,8 +15,8 @@ let package = Package(
     targets: [
         .binaryTarget(
             name: "CloudXCore",
-            url: "https://github.com/cloudx-xenoss/CloudXCoreiOS/releases/download/1.0.129/CloudXCore.xcframework.zip",
-            checksum: "3fa53f1a2f423c8ec2d3a468574a5110b6d5f10dae3de1cf648afe23adb8eb3b"
+            url: "https://github.com/cloudx-xenoss/CloudXCoreiOS/releases/download/1.0.130/CloudXCore.xcframework.zip",
+            checksum: "efa0ef53e2e0ce298e2d7426f0520df0338e41767509cedf0d0bf98755cbe77a"
         )
     ]
 )
