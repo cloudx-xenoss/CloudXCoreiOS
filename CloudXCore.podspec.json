@@ -42,7 +42,7 @@
     "WebKit"
   ],
   "dependencies": {
-    "Sentry": []
+    "Sentry": ["8.49.2"]
   },
   "pod_target_xcconfig": {
     "VALID_ARCHS[sdk=iphoneos*]": "arm64 armv7",
