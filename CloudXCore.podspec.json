@@ -46,9 +46,11 @@
   },
   "pod_target_xcconfig": {
     "VALID_ARCHS[sdk=iphoneos*]": "arm64 armv7",
-    "VALID_ARCHS[sdk=iphonesimulator*]": "x86_64 arm64"
+    "VALID_ARCHS[sdk=iphonesimulator*]": "x86_64 arm64",
+    "ENABLE_USER_SCRIPT_SANDBOXING": "NO"
   },
   "user_target_xcconfig": {
-    "OTHER_LDFLAGS": "-ObjC"
+    "OTHER_LDFLAGS": "-ObjC",
+    "ENABLE_USER_SCRIPT_SANDBOXING": "NO"
   }
 }
