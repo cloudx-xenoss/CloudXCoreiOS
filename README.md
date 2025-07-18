@@ -68,98 +68,101 @@ pod install --repo-update
 
 ### 1. Import the SDK
 
-<div class="language-tabs">
-  <button class="tab-button active" onclick="openTab(event, 'import-objc')">Objective-C</button>
-  <button class="tab-button" onclick="openTab(event, 'import-swift')">Swift</button>
-  
-  <div id="import-objc" class="tab-content active">
-    ```objc
-    #import <CloudXCore/CloudXCore.h>
-    ```
-  </div>
-  
-  <div id="import-swift" class="tab-content">
-    ```swift
-    import CloudXCore
-    ```
-  </div>
-</div>
+<details>
+<summary>Objective-C</summary>
+
+```objc
+#import <CloudXCore/CloudXCore.h>
+```
+
+</details>
+
+<details>
+<summary>Swift</summary>
+
+```swift
+import CloudXCore
+```
+
+</details>
 
 ### 2. Initialize the SDK
 
-<div class="language-tabs">
-  <button class="tab-button active" onclick="openTab(event, 'init-objc')">Objective-C</button>
-  <button class="tab-button" onclick="openTab(event, 'init-swift')">Swift</button>
-  
-  <div id="init-objc" class="tab-content active">
-    ```objc
-    // Initialize with app key only
-    [[CloudXCore shared] initSDKWithAppKey:@"your-app-key-here" 
-                                 completion:^(BOOL success, NSError * _Nullable error) {
-        if (success) {
-            NSLog(@"✅ CloudX SDK initialized successfully");
-        } else {
-            NSLog(@"❌ Failed to initialize CloudX SDK: %@", error.localizedDescription);
-        }
-    }];
+<details>
+<summary>Objective-C</summary>
 
-    // Initialize with app key and hashed user ID
-    [[CloudXCore shared] initSDKWithAppKey:@"your-app-key-here" 
-                               hashedUserID:@"user-id-optional" 
-                                 completion:^(BOOL success, NSError * _Nullable error) {
-        if (success) {
-            NSLog(@"✅ CloudX SDK initialized successfully");
-        } else {
-            NSLog(@"❌ Failed to initialize CloudX SDK: %@", error.localizedDescription);
-        }
-    }];
-    ```
-  </div>
-  
-  <div id="init-swift" class="tab-content">
-    ```swift
-    // Initialize with app key only
-    CloudXCore.shared.initSDK(withAppKey: "your-app-key-here") { success, error in
-        if success {
-            print("✅ CloudX SDK initialized successfully")
-        } else {
-            print("❌ Failed to initialize CloudX SDK: \(error?.localizedDescription ?? "Unknown error")")
-        }
+```objc
+// Initialize with app key only
+[[CloudXCore shared] initSDKWithAppKey:@"your-app-key-here" 
+                             completion:^(BOOL success, NSError * _Nullable error) {
+    if (success) {
+        NSLog(@"✅ CloudX SDK initialized successfully");
+    } else {
+        NSLog(@"❌ Failed to initialize CloudX SDK: %@", error.localizedDescription);
     }
+}];
 
-    // Initialize with app key and hashed user ID
-    CloudXCore.shared.initSDK(withAppKey: "your-app-key-here", 
-                             hashedUserID: "user-id-optional") { success, error in
-        if success {
-            print("✅ CloudX SDK initialized successfully")
-        } else {
-            print("❌ Failed to initialize CloudX SDK: \(error?.localizedDescription ?? "Unknown error")")
-        }
+// Initialize with app key and hashed user ID
+[[CloudXCore shared] initSDKWithAppKey:@"your-app-key-here" 
+                           hashedUserID:@"user-id-optional" 
+                             completion:^(BOOL success, NSError * _Nullable error) {
+    if (success) {
+        NSLog(@"✅ CloudX SDK initialized successfully");
+    } else {
+        NSLog(@"❌ Failed to initialize CloudX SDK: %@", error.localizedDescription);
     }
-    ```
-  </div>
-</div>
+}];
+```
+
+</details>
+
+<details>
+<summary>Swift</summary>
+
+```swift
+// Initialize with app key only
+CloudXCore.shared.initSDK(withAppKey: "your-app-key-here") { success, error in
+    if success {
+        print("✅ CloudX SDK initialized successfully")
+    } else {
+        print("❌ Failed to initialize CloudX SDK: \(error?.localizedDescription ?? "Unknown error")")
+    }
+}
+
+// Initialize with app key and hashed user ID
+CloudXCore.shared.initSDK(withAppKey: "your-app-key-here", 
+                         hashedUserID: "user-id-optional") { success, error in
+    if success {
+        print("✅ CloudX SDK initialized successfully")
+    } else {
+        print("❌ Failed to initialize CloudX SDK: \(error?.localizedDescription ?? "Unknown error")")
+    }
+}
+```
+
+</details>
 
 ### 3. Check SDK Status
 
-<div class="language-tabs">
-  <button class="tab-button active" onclick="openTab(event, 'status-objc')">Objective-C</button>
-  <button class="tab-button" onclick="openTab(event, 'status-swift')">Swift</button>
-  
-  <div id="status-objc" class="tab-content active">
-    ```objc
-    BOOL isInitialized = [[CloudXCore shared] isInitialised];
-    NSString *sdkVersion = [[CloudXCore shared] sdkVersion];
-    ```
-  </div>
-  
-  <div id="status-swift" class="tab-content">
-    ```swift
-    let isInitialized = CloudXCore.shared.isInitialised
-    let sdkVersion = CloudXCore.shared.sdkVersion
-    ```
-  </div>
-</div>
+<details>
+<summary>Objective-C</summary>
+
+```objc
+BOOL isInitialized = [[CloudXCore shared] isInitialised];
+NSString *sdkVersion = [[CloudXCore shared] sdkVersion];
+```
+
+</details>
+
+<details>
+<summary>Swift</summary>
+
+```swift
+let isInitialized = CloudXCore.shared.isInitialised
+let sdkVersion = CloudXCore.shared.sdkVersion
+```
+
+</details>
 
 ## Ad Integration
 
@@ -167,141 +170,142 @@ pod install --repo-update
 
 Banner ads are rectangular ads that appear at the top or bottom of the screen.
 
-<div class="language-tabs">
-  <button class="tab-button active" onclick="openTab(event, 'banner-objc')">Objective-C</button>
-  <button class="tab-button" onclick="openTab(event, 'banner-swift')">Swift</button>
-  
-  <div id="banner-objc" class="tab-content active">
-    ```objc
-    @interface YourViewController () <CLXBannerDelegate>
-    @property (nonatomic, strong) CLXBannerAdView *bannerAd;
-    @end
+<details>
+<summary>Objective-C</summary>
 
-    @implementation YourViewController
+```objc
+@interface YourViewController () <CLXBannerDelegate>
+@property (nonatomic, strong) CLXBannerAdView *bannerAd;
+@end
 
-    - (void)createBannerAd {
-        // Create banner ad
-        self.bannerAd = [[CloudXCore shared] createBannerWithPlacement:@"your-banner-placement"
-                                                        viewController:self
-                                                            delegate:self
-                                                                tmax:nil];
+@implementation YourViewController
+
+- (void)createBannerAd {
+    // Create banner ad
+    self.bannerAd = [[CloudXCore shared] createBannerWithPlacement:@"your-banner-placement"
+                                                    viewController:self
+                                                        delegate:self
+                                                            tmax:nil];
+    
+    if (self.bannerAd) {
+        // Add to view hierarchy
+        self.bannerAd.translatesAutoresizingMaskIntoConstraints = NO;
+        [self.view addSubview:self.bannerAd];
         
-        if (self.bannerAd) {
+        // Set constraints
+        [NSLayoutConstraint activateConstraints:@[
+            [self.bannerAd.bottomAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.bottomAnchor],
+            [self.bannerAd.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor],
+            [self.bannerAd.widthAnchor constraintEqualToConstant:320],
+            [self.bannerAd.heightAnchor constraintEqualToConstant:50]
+        ]];
+        
+        // Load the ad
+        [self.bannerAd load];
+    }
+}
+
+#pragma mark - CLXBannerDelegate
+
+- (void)didLoadWithAd:(id<CLXAd>)ad {
+    NSLog(@"✅ Banner ad loaded successfully");
+}
+
+- (void)failToLoadWithAd:(id<CLXAd>)ad error:(NSError *)error {
+    NSLog(@"❌ Banner ad failed to load: %@", error.localizedDescription);
+}
+
+- (void)didShowWithAd:(id<CLXAd>)ad {
+    NSLog(@"👀 Banner ad shown");
+}
+
+- (void)didClickWithAd:(id<CLXAd>)ad {
+    NSLog(@"👆 Banner ad clicked");
+}
+
+- (void)impressionOn:(id<CLXAd>)ad {
+    NSLog(@"👁️ Banner ad impression recorded");
+}
+
+- (void)didHideWithAd:(id<CLXAd>)ad {
+    NSLog(@"🔚 Banner ad hidden");
+}
+
+- (void)closedByUserActionWithAd:(id<CLXAd>)ad {
+    NSLog(@"✋ Banner ad closed by user");
+}
+
+@end
+```
+
+</details>
+
+<details>
+<summary>Swift</summary>
+
+```swift
+class YourViewController: UIViewController, CLXBannerDelegate {
+    private var bannerAd: CLXBannerAdView?
+    
+    func createBannerAd() {
+        // Create banner ad
+        bannerAd = CloudXCore.shared.createBanner(withPlacement: "your-banner-placement",
+                                                 viewController: self,
+                                                 delegate: self,
+                                                 tmax: nil)
+        
+        if let bannerAd = bannerAd {
             // Add to view hierarchy
-            self.bannerAd.translatesAutoresizingMaskIntoConstraints = NO;
-            [self.view addSubview:self.bannerAd];
+            bannerAd.translatesAutoresizingMaskIntoConstraints = false
+            view.addSubview(bannerAd)
             
             // Set constraints
-            [NSLayoutConstraint activateConstraints:@[
-                [self.bannerAd.bottomAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.bottomAnchor],
-                [self.bannerAd.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor],
-                [self.bannerAd.widthAnchor constraintEqualToConstant:320],
-                [self.bannerAd.heightAnchor constraintEqualToConstant:50]
-            ]];
+            NSLayoutConstraint.activate([
+                bannerAd.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+                bannerAd.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+                bannerAd.widthAnchor.constraint(equalToConstant: 320),
+                bannerAd.heightAnchor.constraint(equalToConstant: 50)
+            ])
             
             // Load the ad
-            [self.bannerAd load];
+            bannerAd.load()
         }
     }
+}
 
-    #pragma mark - CLXBannerDelegate
-
-    - (void)didLoadWithAd:(id<CLXAd>)ad {
-        NSLog(@"✅ Banner ad loaded successfully");
+// MARK: - CLXBannerDelegate
+extension YourViewController {
+    func didLoad(with ad: CLXAd) {
+        print("✅ Banner ad loaded successfully")
     }
-
-    - (void)failToLoadWithAd:(id<CLXAd>)ad error:(NSError *)error {
-        NSLog(@"❌ Banner ad failed to load: %@", error.localizedDescription);
+    
+    func failToLoad(with ad: CLXAd, error: Error) {
+        print("❌ Banner ad failed to load: \(error.localizedDescription)")
     }
-
-    - (void)didShowWithAd:(id<CLXAd>)ad {
-        NSLog(@"👀 Banner ad shown");
+    
+    func didShow(with ad: CLXAd) {
+        print("👀 Banner ad shown")
     }
-
-    - (void)didClickWithAd:(id<CLXAd>)ad {
-        NSLog(@"👆 Banner ad clicked");
+    
+    func didClick(with ad: CLXAd) {
+        print("👆 Banner ad clicked")
     }
-
-    - (void)impressionOn:(id<CLXAd>)ad {
-        NSLog(@"👁️ Banner ad impression recorded");
+    
+    func impression(on ad: CLXAd) {
+        print("👁️ Banner ad impression recorded")
     }
-
-    - (void)didHideWithAd:(id<CLXAd>)ad {
-        NSLog(@"🔚 Banner ad hidden");
+    
+    func didHide(with ad: CLXAd) {
+        print("🔚 Banner ad hidden")
     }
-
-    - (void)closedByUserActionWithAd:(id<CLXAd>)ad {
-        NSLog(@"✋ Banner ad closed by user");
+    
+    func closedByUserAction(with ad: CLXAd) {
+        print("✋ Banner ad closed by user")
     }
+}
+```
 
-    @end
-    ```
-  </div>
-  
-  <div id="banner-swift" class="tab-content">
-    ```swift
-    class YourViewController: UIViewController, CLXBannerDelegate {
-        private var bannerAd: CLXBannerAdView?
-        
-        func createBannerAd() {
-            // Create banner ad
-            bannerAd = CloudXCore.shared.createBanner(withPlacement: "your-banner-placement",
-                                                     viewController: self,
-                                                     delegate: self,
-                                                     tmax: nil)
-            
-            if let bannerAd = bannerAd {
-                // Add to view hierarchy
-                bannerAd.translatesAutoresizingMaskIntoConstraints = false
-                view.addSubview(bannerAd)
-                
-                // Set constraints
-                NSLayoutConstraint.activate([
-                    bannerAd.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-                    bannerAd.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-                    bannerAd.widthAnchor.constraint(equalToConstant: 320),
-                    bannerAd.heightAnchor.constraint(equalToConstant: 50)
-                ])
-                
-                // Load the ad
-                bannerAd.load()
-            }
-        }
-    }
-
-    // MARK: - CLXBannerDelegate
-    extension YourViewController {
-        func didLoad(with ad: CLXAd) {
-            print("✅ Banner ad loaded successfully")
-        }
-        
-        func failToLoad(with ad: CLXAd, error: Error) {
-            print("❌ Banner ad failed to load: \(error.localizedDescription)")
-        }
-        
-        func didShow(with ad: CLXAd) {
-            print("👀 Banner ad shown")
-        }
-        
-        func didClick(with ad: CLXAd) {
-            print("👆 Banner ad clicked")
-        }
-        
-        func impression(on ad: CLXAd) {
-            print("👁️ Banner ad impression recorded")
-        }
-        
-        func didHide(with ad: CLXAd) {
-            print("🔚 Banner ad hidden")
-        }
-        
-        func closedByUserAction(with ad: CLXAd) {
-            print("✋ Banner ad closed by user")
-        }
-    }
-    ```
-  </div>
-</div>
+</details>
 
 ### Interstitial Ads
 
@@ -891,54 +895,55 @@ extension YourViewController {
 
 ### User Targeting
 
-<div class="language-tabs">
-  <button class="tab-button active" onclick="openTab(event, 'targeting-objc')">Objective-C</button>
-  <button class="tab-button" onclick="openTab(event, 'targeting-swift')">Swift</button>
-  
-  <div id="targeting-objc" class="tab-content active">
-    ```objc
-    // Set hashed user ID for targeting
-    [[CloudXCore shared] provideUserDetailsWithHashedUserID:@"hashed-user-id"];
+<details>
+<summary>Objective-C</summary>
 
-    // Set key-value pairs for targeting
-    [[CloudXCore shared] useHashedKeyValueWithKey:@"age" value:@"25"];
-    [[CloudXCore shared] useHashedKeyValueWithKey:@"gender" value:@"male"];
+```objc
+// Set hashed user ID for targeting
+[[CloudXCore shared] provideUserDetailsWithHashedUserID:@"hashed-user-id"];
 
-    // Set multiple key-value pairs
-    NSDictionary *userData = @{
-        @"age": @"25",
-        @"gender": @"male",
-        @"location": @"US"
-    };
-    [[CloudXCore shared] useKeyValuesWithUserDictionary:userData];
+// Set key-value pairs for targeting
+[[CloudXCore shared] useHashedKeyValueWithKey:@"age" value:@"25"];
+[[CloudXCore shared] useHashedKeyValueWithKey:@"gender" value:@"male"];
 
-    // Set bidder-specific targeting
-    [[CloudXCore shared] useBidderKeyValueWithBidder:@"adnetwork" key:@"custom_key" value:@"custom_value"];
-    ```
-  </div>
-  
-  <div id="targeting-swift" class="tab-content">
-    ```swift
-    // Set hashed user ID for targeting
-    CloudXCore.shared.provideUserDetails(withHashedUserID: "hashed-user-id")
+// Set multiple key-value pairs
+NSDictionary *userData = @{
+    @"age": @"25",
+    @"gender": @"male",
+    @"location": @"US"
+};
+[[CloudXCore shared] useKeyValuesWithUserDictionary:userData];
 
-    // Set key-value pairs for targeting
-    CloudXCore.shared.useHashedKeyValue(withKey: "age", value: "25")
-    CloudXCore.shared.useHashedKeyValue(withKey: "gender", value: "male")
+// Set bidder-specific targeting
+[[CloudXCore shared] useBidderKeyValueWithBidder:@"adnetwork" key:@"custom_key" value:@"custom_value"];
+```
 
-    // Set multiple key-value pairs
-    let userData: [String: String] = [
-        "age": "25",
-        "gender": "male",
-        "location": "US"
-    ]
-    CloudXCore.shared.useKeyValues(withUserDictionary: userData)
+</details>
 
-    // Set bidder-specific targeting
-    CloudXCore.shared.useBidderKeyValue(withBidder: "adnetwork", key: "custom_key", value: "custom_value")
-    ```
-  </div>
-</div>
+<details>
+<summary>Swift</summary>
+
+```swift
+// Set hashed user ID for targeting
+CloudXCore.shared.provideUserDetails(withHashedUserID: "hashed-user-id")
+
+// Set key-value pairs for targeting
+CloudXCore.shared.useHashedKeyValue(withKey: "age", value: "25")
+CloudXCore.shared.useHashedKeyValue(withKey: "gender", value: "male")
+
+// Set multiple key-value pairs
+let userData: [String: String] = [
+    "age": "25",
+    "gender": "male",
+    "location": "US"
+]
+CloudXCore.shared.useKeyValues(withUserDictionary: userData)
+
+// Set bidder-specific targeting
+CloudXCore.shared.useBidderKeyValue(withBidder: "adnetwork", key: "custom_key", value: "custom_value")
+```
+
+</details>
 
 ### Ad Lifecycle Management
 
@@ -1199,34 +1204,35 @@ All ad types support these common callbacks:
 
 Enable debug logging to troubleshoot issues:
 
-<div class="language-tabs">
-  <button class="tab-button active" onclick="openTab(event, 'debug-objc')">Objective-C</button>
-  <button class="tab-button" onclick="openTab(event, 'debug-swift')">Swift</button>
-  
-  <div id="debug-objc" class="tab-content active">
-    ```objc
-    // Check SDK logs
-    NSDictionary *logs = [[CloudXCore shared] logsData];
-    NSLog(@"SDK Logs: %@", logs);
+<details>
+<summary>Objective-C</summary>
 
-    // Enable verbose logging via environment variable
-    // Set CLOUDX_VERBOSE_LOG=1 in your scheme's environment variables
-    // This enables detailed debug output in release builds
-    ```
-  </div>
-  
-  <div id="debug-swift" class="tab-content">
-    ```swift
-    // Check SDK logs
-    let logs = CloudXCore.shared.logsData
-    print("SDK Logs: \(logs)")
+```objc
+// Check SDK logs
+NSDictionary *logs = [[CloudXCore shared] logsData];
+NSLog(@"SDK Logs: %@", logs);
 
-    // Enable verbose logging via environment variable
-    // Set CLOUDX_VERBOSE_LOG=1 in your scheme's environment variables
-    // This enables detailed debug output in release builds
-    ```
-  </div>
-</div>
+// Enable verbose logging via environment variable
+// Set CLOUDX_VERBOSE_LOG=1 in your scheme's environment variables
+// This enables detailed debug output in release builds
+```
+
+</details>
+
+<details>
+<summary>Swift</summary>
+
+```swift
+// Check SDK logs
+let logs = CloudXCore.shared.logsData
+print("SDK Logs: \(logs)")
+
+// Enable verbose logging via environment variable
+// Set CLOUDX_VERBOSE_LOG=1 in your scheme's environment variables
+// This enables detailed debug output in release builds
+```
+
+</details>
 
 **Environment Variable Setup:**
 
@@ -1240,70 +1246,6 @@ Enable debug logging to troubleshoot issues:
 - **Error**: Persisted for several days, slowest performance
 
 ## Support
-
-<style>
-.language-tabs { 
-  border: 1px solid #e1e4e8; 
-  border-radius: 6px; 
-  margin: 16px 0;
-  background: #fff;
-}
-.tab-button { 
-  background: #f6f8fa; 
-  border: none; 
-  padding: 12px 20px; 
-  cursor: pointer; 
-  border-right: 1px solid #e1e4e8;
-  font-size: 14px;
-  font-weight: 500;
-  color: #586069;
-  transition: all 0.2s ease;
-}
-.tab-button:first-child { border-top-left-radius: 6px; }
-.tab-button:last-child { 
-  border-right: none; 
-  border-top-right-radius: 6px;
-}
-.tab-button:hover { 
-  background: #e1e4e8; 
-  color: #24292e;
-}
-.tab-button.active { 
-  background: #fff; 
-  color: #24292e;
-  border-bottom: 2px solid #0366d6;
-  font-weight: 600;
-}
-.tab-content { 
-  display: none; 
-  padding: 0;
-  background: #fff;
-  border-top: 1px solid #e1e4e8;
-}
-.tab-content.active { 
-  display: block; 
-}
-.tab-content pre {
-  margin: 0;
-  border-radius: 0 0 6px 6px;
-}
-</style>
-
-<script>
-function openTab(evt, language) {
-  var i, tabcontent, tablinks;
-  tabcontent = document.getElementsByClassName("tab-content");
-  for (i = 0; i < tabcontent.length; i++) {
-    tabcontent[i].style.display = "none";
-  }
-  tablinks = document.getElementsByClassName("tab-button");
-  for (i = 0; i < tablinks.length; i++) {
-    tablinks[i].className = tablinks[i].className.replace(" active", "");
-  }
-  document.getElementById(language).style.display = "block";
-  evt.currentTarget.className += " active";
-}
-</script>
 
 - **Documentation**: [CloudX iOS Docs](https://cloudx-xenoss.github.io/CloudXCoreiOS/documentation/cloudxcore)
 - **Issues**: [GitHub Issues](https://github.com/cloudx-xenoss/CloudXCoreiOS/issues)
