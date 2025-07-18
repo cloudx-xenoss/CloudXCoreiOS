@@ -148,8 +148,8 @@ Banner ads are rectangular ads that appear at the top or bottom of the screen.
 
 **Objective-C:**
 ```objc
-@interface YourViewController () <CloudXBannerDelegate>
-@property (nonatomic, strong) CloudXBannerAdView *bannerAd;
+@interface YourViewController () <CLXBannerDelegate>
+@property (nonatomic, strong) CLXBannerAdView *bannerAd;
 @end
 
 @implementation YourViewController
@@ -179,33 +179,33 @@ Banner ads are rectangular ads that appear at the top or bottom of the screen.
     }
 }
 
-#pragma mark - CloudXBannerDelegate
+#pragma mark - CLXBannerDelegate
 
-- (void)didLoadWithAd:(id<CloudXAd>)ad {
+- (void)didLoadWithAd:(id<CLXAd>)ad {
     NSLog(@"✅ Banner ad loaded successfully");
 }
 
-- (void)failToLoadWithAd:(id<CloudXAd>)ad error:(NSError *)error {
+- (void)failToLoadWithAd:(id<CLXAd>)ad error:(NSError *)error {
     NSLog(@"❌ Banner ad failed to load: %@", error.localizedDescription);
 }
 
-- (void)didShowWithAd:(id<CloudXAd>)ad {
+- (void)didShowWithAd:(id<CLXAd>)ad {
     NSLog(@"👀 Banner ad shown");
 }
 
-- (void)didClickWithAd:(id<CloudXAd>)ad {
+- (void)didClickWithAd:(id<CLXAd>)ad {
     NSLog(@"👆 Banner ad clicked");
 }
 
-- (void)impressionOn:(id<CloudXAd>)ad {
+- (void)impressionOn:(id<CLXAd>)ad {
     NSLog(@"👁️ Banner ad impression recorded");
 }
 
-- (void)didHideWithAd:(id<CloudXAd>)ad {
+- (void)didHideWithAd:(id<CLXAd>)ad {
     NSLog(@"🔚 Banner ad hidden");
 }
 
-- (void)closedByUserActionWithAd:(id<CloudXAd>)ad {
+- (void)closedByUserActionWithAd:(id<CLXAd>)ad {
     NSLog(@"✋ Banner ad closed by user");
 }
 
@@ -214,8 +214,8 @@ Banner ads are rectangular ads that appear at the top or bottom of the screen.
 
 **Swift:**
 ```swift
-class YourViewController: UIViewController, CloudXBannerDelegate {
-    private var bannerAd: CloudXBannerAdView?
+class YourViewController: UIViewController, CLXBannerDelegate {
+    private var bannerAd: CLXBannerAdView?
     
     func createBannerAd() {
         // Create banner ad
@@ -243,33 +243,33 @@ class YourViewController: UIViewController, CloudXBannerDelegate {
     }
 }
 
-// MARK: - CloudXBannerDelegate
+// MARK: - CLXBannerDelegate
 extension YourViewController {
-    func didLoad(with ad: CloudXAd) {
+    func didLoad(with ad: CLXAd) {
         print("✅ Banner ad loaded successfully")
     }
     
-    func failToLoad(with ad: CloudXAd, error: Error) {
+    func failToLoad(with ad: CLXAd, error: Error) {
         print("❌ Banner ad failed to load: \(error.localizedDescription)")
     }
     
-    func didShow(with ad: CloudXAd) {
+    func didShow(with ad: CLXAd) {
         print("👀 Banner ad shown")
     }
     
-    func didClick(with ad: CloudXAd) {
+    func didClick(with ad: CLXAd) {
         print("👆 Banner ad clicked")
     }
     
-    func impression(on ad: CloudXAd) {
+    func impression(on ad: CLXAd) {
         print("👁️ Banner ad impression recorded")
     }
     
-    func didHide(with ad: CloudXAd) {
+    func didHide(with ad: CLXAd) {
         print("🔚 Banner ad hidden")
     }
     
-    func closedByUserAction(with ad: CloudXAd) {
+    func closedByUserAction(with ad: CLXAd) {
         print("✋ Banner ad closed by user")
     }
 }
@@ -281,8 +281,8 @@ Interstitial ads are full-screen ads that appear between app content.
 
 **Objective-C:**
 ```objc
-@interface YourViewController () <CloudXInterstitialDelegate>
-@property (nonatomic, strong) id<CloudXInterstitial> interstitialAd;
+@interface YourViewController () <CLXInterstitialDelegate>
+@property (nonatomic, strong) id<CLXInterstitial> interstitialAd;
 @end
 
 @implementation YourViewController
@@ -306,39 +306,39 @@ Interstitial ads are full-screen ads that appear between app content.
     }
 }
 
-#pragma mark - CloudXInterstitialDelegate
+#pragma mark - CLXInterstitialDelegate
 
-- (void)didLoadWithAd:(id<CloudXAd>)ad {
+- (void)didLoadWithAd:(id<CLXAd>)ad {
     NSLog(@"✅ Interstitial ad loaded successfully");
 }
 
-- (void)failToLoadWithAd:(id<CloudXAd>)ad error:(NSError *)error {
+- (void)failToLoadWithAd:(id<CLXAd>)ad error:(NSError *)error {
     NSLog(@"❌ Interstitial ad failed to load: %@", error.localizedDescription);
 }
 
-- (void)didShowWithAd:(id<CloudXAd>)ad {
+- (void)didShowWithAd:(id<CLXAd>)ad {
     NSLog(@"👀 Interstitial ad shown");
 }
 
-- (void)failToShowWithAd:(id<CloudXAd>)ad error:(NSError *)error {
+- (void)failToShowWithAd:(id<CLXAd>)ad error:(NSError *)error {
     NSLog(@"❌ Interstitial ad failed to show: %@", error.localizedDescription);
 }
 
-- (void)didHideWithAd:(id<CloudXAd>)ad {
+- (void)didHideWithAd:(id<CLXAd>)ad {
     NSLog(@"🔚 Interstitial ad hidden");
     // Reload for next use
     [self createInterstitialAd];
 }
 
-- (void)didClickWithAd:(id<CloudXAd>)ad {
+- (void)didClickWithAd:(id<CLXAd>)ad {
     NSLog(@"👆 Interstitial ad clicked");
 }
 
-- (void)impressionOn:(id<CloudXAd>)ad {
+- (void)impressionOn:(id<CLXAd>)ad {
     NSLog(@"👁️ Interstitial ad impression recorded");
 }
 
-- (void)closedByUserActionWithAd:(id<CloudXAd>)ad {
+- (void)closedByUserActionWithAd:(id<CLXAd>)ad {
     NSLog(@"✋ Interstitial ad closed by user");
     // Reload for next use
     [self createInterstitialAd];
@@ -349,8 +349,8 @@ Interstitial ads are full-screen ads that appear between app content.
 
 **Swift:**
 ```swift
-class YourViewController: UIViewController, CloudXInterstitialDelegate {
-    private var interstitialAd: CloudXInterstitial?
+class YourViewController: UIViewController, CLXInterstitialDelegate {
+    private var interstitialAd: CLXInterstitial?
     
     func createInterstitialAd() {
         // Create interstitial ad
@@ -372,39 +372,39 @@ class YourViewController: UIViewController, CloudXInterstitialDelegate {
     }
 }
 
-// MARK: - CloudXInterstitialDelegate
+// MARK: - CLXInterstitialDelegate
 extension YourViewController {
-    func didLoad(with ad: CloudXAd) {
+    func didLoad(with ad: CLXAd) {
         print("✅ Interstitial ad loaded successfully")
     }
     
-    func failToLoad(with ad: CloudXAd, error: Error) {
+    func failToLoad(with ad: CLXAd, error: Error) {
         print("❌ Interstitial ad failed to load: \(error.localizedDescription)")
     }
     
-    func didShow(with ad: CloudXAd) {
+    func didShow(with ad: CLXAd) {
         print("👀 Interstitial ad shown")
     }
     
-    func failToShow(with ad: CloudXAd, error: Error) {
+    func failToShow(with ad: CLXAd, error: Error) {
         print("❌ Interstitial ad failed to show: \(error.localizedDescription)")
     }
     
-    func didHide(with ad: CloudXAd) {
+    func didHide(with ad: CLXAd) {
         print("🔚 Interstitial ad hidden")
         // Reload for next use
         createInterstitialAd()
     }
     
-    func didClick(with ad: CloudXAd) {
+    func didClick(with ad: CLXAd) {
         print("👆 Interstitial ad clicked")
     }
     
-    func impression(on ad: CloudXAd) {
+    func impression(on ad: CLXAd) {
         print("👁️ Interstitial ad impression recorded")
     }
     
-    func closedByUserAction(with ad: CloudXAd) {
+    func closedByUserAction(with ad: CLXAd) {
         print("✋ Interstitial ad closed by user")
         // Reload for next use
         createInterstitialAd()
@@ -418,8 +418,8 @@ Rewarded ads are full-screen ads that provide rewards to users for watching.
 
 **Objective-C:**
 ```objc
-@interface YourViewController () <CloudXRewardedDelegate>
-@property (nonatomic, strong) id<CloudXRewardedInterstitial> rewardedAd;
+@interface YourViewController () <CLXRewardedDelegate>
+@property (nonatomic, strong) id<CLXRewardedInterstitial> rewardedAd;
 @end
 
 @implementation YourViewController
@@ -443,56 +443,56 @@ Rewarded ads are full-screen ads that provide rewards to users for watching.
     }
 }
 
-#pragma mark - CloudXRewardedDelegate
+#pragma mark - CLXRewardedDelegate
 
-- (void)didLoadWithAd:(id<CloudXAd>)ad {
+- (void)didLoadWithAd:(id<CLXAd>)ad {
     NSLog(@"✅ Rewarded ad loaded successfully");
 }
 
-- (void)failToLoadWithAd:(id<CloudXAd>)ad error:(NSError *)error {
+- (void)failToLoadWithAd:(id<CLXAd>)ad error:(NSError *)error {
     NSLog(@"❌ Rewarded ad failed to load: %@", error.localizedDescription);
 }
 
-- (void)didShowWithAd:(id<CloudXAd>)ad {
+- (void)didShowWithAd:(id<CLXAd>)ad {
     NSLog(@"👀 Rewarded ad shown");
 }
 
-- (void)failToShowWithAd:(id<CloudXAd>)ad error:(NSError *)error {
+- (void)failToShowWithAd:(id<CLXAd>)ad error:(NSError *)error {
     NSLog(@"❌ Rewarded ad failed to show: %@", error.localizedDescription);
 }
 
-- (void)didHideWithAd:(id<CloudXAd>)ad {
+- (void)didHideWithAd:(id<CLXAd>)ad {
     NSLog(@"🔚 Rewarded ad hidden");
     // Reload for next use
     [self createRewardedAd];
 }
 
-- (void)didClickWithAd:(id<CloudXAd>)ad {
+- (void)didClickWithAd:(id<CLXAd>)ad {
     NSLog(@"👆 Rewarded ad clicked");
 }
 
-- (void)impressionOn:(id<CloudXAd>)ad {
+- (void)impressionOn:(id<CLXAd>)ad {
     NSLog(@"👁️ Rewarded ad impression recorded");
 }
 
-- (void)closedByUserActionWithAd:(id<CloudXAd>)ad {
+- (void)closedByUserActionWithAd:(id<CLXAd>)ad {
     NSLog(@"✋ Rewarded ad closed by user");
     // Reload for next use
     [self createRewardedAd];
 }
 
 // Rewarded-specific callbacks
-- (void)userRewarded:(id<CloudXAd>)ad {
+- (void)userRewarded:(id<CLXAd>)ad {
     NSLog(@"🎁 User earned reward!");
     // Handle reward here
     [self showRewardDialog];
 }
 
-- (void)rewardedVideoStarted:(id<CloudXAd>)ad {
+- (void)rewardedVideoStarted:(id<CLXAd>)ad {
     NSLog(@"▶️ Rewarded video started");
 }
 
-- (void)rewardedVideoCompleted:(id<CloudXAd>)ad {
+- (void)rewardedVideoCompleted:(id<CLXAd>)ad {
     NSLog(@"✅ Rewarded video completed");
 }
 
@@ -513,8 +513,8 @@ Rewarded ads are full-screen ads that provide rewards to users for watching.
 
 **Swift:**
 ```swift
-class YourViewController: UIViewController, CloudXRewardedDelegate {
-    private var rewardedAd: CloudXRewardedInterstitial?
+class YourViewController: UIViewController, CLXRewardedDelegate {
+    private var rewardedAd: CLXRewardedInterstitial?
     
     func createRewardedAd() {
         // Create rewarded ad
@@ -536,56 +536,56 @@ class YourViewController: UIViewController, CloudXRewardedDelegate {
     }
 }
 
-// MARK: - CloudXRewardedDelegate
+// MARK: - CLXRewardedDelegate
 extension YourViewController {
-    func didLoad(with ad: CloudXAd) {
+    func didLoad(with ad: CLXAd) {
         print("✅ Rewarded ad loaded successfully")
     }
     
-    func failToLoad(with ad: CloudXAd, error: Error) {
+    func failToLoad(with ad: CLXAd, error: Error) {
         print("❌ Rewarded ad failed to load: \(error.localizedDescription)")
     }
     
-    func didShow(with ad: CloudXAd) {
+    func didShow(with ad: CLXAd) {
         print("👀 Rewarded ad shown")
     }
     
-    func failToShow(with ad: CloudXAd, error: Error) {
+    func failToShow(with ad: CLXAd, error: Error) {
         print("❌ Rewarded ad failed to show: \(error.localizedDescription)")
     }
     
-    func didHide(with ad: CloudXAd) {
+    func didHide(with ad: CLXAd) {
         print("🔚 Rewarded ad hidden")
         // Reload for next use
         createRewardedAd()
     }
     
-    func didClick(with ad: CloudXAd) {
+    func didClick(with ad: CLXAd) {
         print("👆 Rewarded ad clicked")
     }
     
-    func impression(on ad: CloudXAd) {
+    func impression(on ad: CLXAd) {
         print("👁️ Rewarded ad impression recorded")
     }
     
-    func closedByUserAction(with ad: CloudXAd) {
+    func closedByUserAction(with ad: CLXAd) {
         print("✋ Rewarded ad closed by user")
         // Reload for next use
         createRewardedAd()
     }
     
     // Rewarded-specific callbacks
-    func userRewarded(_ ad: CloudXAd) {
+    func userRewarded(_ ad: CLXAd) {
         print("🎁 User earned reward!")
         // Handle reward here
         showRewardDialog()
     }
     
-    func rewardedVideoStarted(_ ad: CloudXAd) {
+    func rewardedVideoStarted(_ ad: CLXAd) {
         print("▶️ Rewarded video started")
     }
     
-    func rewardedVideoCompleted(_ ad: CloudXAd) {
+    func rewardedVideoCompleted(_ ad: CLXAd) {
         print("✅ Rewarded video completed")
     }
     
@@ -607,8 +607,8 @@ Native ads are designed to match the look and feel of your app's content.
 
 **Objective-C:**
 ```objc
-@interface YourViewController () <CloudXNativeDelegate>
-@property (nonatomic, strong) CloudXNativeAdView *nativeAd;
+@interface YourViewController () <CLXNativeDelegate>
+@property (nonatomic, strong) CLXNativeAdView *nativeAd;
 @end
 
 @implementation YourViewController
@@ -635,37 +635,37 @@ Native ads are designed to match the look and feel of your app's content.
     }
 }
 
-#pragma mark - CloudXNativeDelegate
+#pragma mark - CLXNativeDelegate
 
-- (void)didLoadWithAd:(id<CloudXAd>)ad {
+- (void)didLoadWithAd:(id<CLXAd>)ad {
     NSLog(@"✅ Native ad loaded successfully");
 }
 
-- (void)failToLoadWithAd:(id<CloudXAd>)ad error:(NSError *)error {
+- (void)failToLoadWithAd:(id<CLXAd>)ad error:(NSError *)error {
     NSLog(@"❌ Native ad failed to load: %@", error.localizedDescription);
 }
 
-- (void)didShowWithAd:(id<CloudXAd>)ad {
+- (void)didShowWithAd:(id<CLXAd>)ad {
     NSLog(@"👀 Native ad shown");
 }
 
-- (void)failToShowWithAd:(id<CloudXAd>)ad error:(NSError *)error {
+- (void)failToShowWithAd:(id<CLXAd>)ad error:(NSError *)error {
     NSLog(@"❌ Native ad failed to show: %@", error.localizedDescription);
 }
 
-- (void)didHideWithAd:(id<CloudXAd>)ad {
+- (void)didHideWithAd:(id<CLXAd>)ad {
     NSLog(@"🔚 Native ad hidden");
 }
 
-- (void)didClickWithAd:(id<CloudXAd>)ad {
+- (void)didClickWithAd:(id<CLXAd>)ad {
     NSLog(@"👆 Native ad clicked");
 }
 
-- (void)impressionOn:(id<CloudXAd>)ad {
+- (void)impressionOn:(id<CLXAd>)ad {
     NSLog(@"👁️ Native ad impression recorded");
 }
 
-- (void)closedByUserActionWithAd:(id<CloudXAd>)ad {
+- (void)closedByUserActionWithAd:(id<CLXAd>)ad {
     NSLog(@"✋ Native ad closed by user");
 }
 
@@ -674,8 +674,8 @@ Native ads are designed to match the look and feel of your app's content.
 
 **Swift:**
 ```swift
-class YourViewController: UIViewController, CloudXNativeDelegate {
-    private var nativeAd: CloudXNativeAdView?
+class YourViewController: UIViewController, CLXNativeDelegate {
+    private var nativeAd: CLXNativeAdView?
     
     func createNativeAd() {
         // Create native ad
@@ -700,37 +700,37 @@ class YourViewController: UIViewController, CloudXNativeDelegate {
     }
 }
 
-// MARK: - CloudXNativeDelegate
+// MARK: - CLXNativeDelegate
 extension YourViewController {
-    func didLoad(with ad: CloudXAd) {
+    func didLoad(with ad: CLXAd) {
         print("✅ Native ad loaded successfully")
     }
     
-    func failToLoad(with ad: CloudXAd, error: Error) {
+    func failToLoad(with ad: CLXAd, error: Error) {
         print("❌ Native ad failed to load: \(error.localizedDescription)")
     }
     
-    func didShow(with ad: CloudXAd) {
+    func didShow(with ad: CLXAd) {
         print("👀 Native ad shown")
     }
     
-    func failToShow(with ad: CloudXAd, error: Error) {
+    func failToShow(with ad: CLXAd, error: Error) {
         print("❌ Native ad failed to show: \(error.localizedDescription)")
     }
     
-    func didHide(with ad: CloudXAd) {
+    func didHide(with ad: CLXAd) {
         print("🔚 Native ad hidden")
     }
     
-    func didClick(with ad: CloudXAd) {
+    func didClick(with ad: CLXAd) {
         print("👆 Native ad clicked")
     }
     
-    func impression(on ad: CloudXAd) {
+    func impression(on ad: CLXAd) {
         print("👁️ Native ad impression recorded")
     }
     
-    func closedByUserAction(with ad: CloudXAd) {
+    func closedByUserAction(with ad: CLXAd) {
         print("✋ Native ad closed by user")
     }
 }
@@ -742,8 +742,8 @@ MREC ads are 300x250 pixel banner ads that provide more space for rich content.
 
 **Objective-C:**
 ```objc
-@interface YourViewController () <CloudXBannerDelegate>
-@property (nonatomic, strong) CloudXBannerAdView *mrecAd;
+@interface YourViewController () <CLXBannerDelegate>
+@property (nonatomic, strong) CLXBannerAdView *mrecAd;
 @end
 
 @implementation YourViewController
@@ -772,33 +772,33 @@ MREC ads are 300x250 pixel banner ads that provide more space for rich content.
     }
 }
 
-#pragma mark - CloudXBannerDelegate
+#pragma mark - CLXBannerDelegate
 
-- (void)didLoadWithAd:(id<CloudXAd>)ad {
+- (void)didLoadWithAd:(id<CLXAd>)ad {
     NSLog(@"✅ MREC ad loaded successfully");
 }
 
-- (void)failToLoadWithAd:(id<CloudXAd>)ad error:(NSError *)error {
+- (void)failToLoadWithAd:(id<CLXAd>)ad error:(NSError *)error {
     NSLog(@"❌ MREC ad failed to load: %@", error.localizedDescription);
 }
 
-- (void)didShowWithAd:(id<CloudXAd>)ad {
+- (void)didShowWithAd:(id<CLXAd>)ad {
     NSLog(@"👀 MREC ad shown");
 }
 
-- (void)didClickWithAd:(id<CloudXAd>)ad {
+- (void)didClickWithAd:(id<CLXAd>)ad {
     NSLog(@"👆 MREC ad clicked");
 }
 
-- (void)impressionOn:(id<CloudXAd>)ad {
+- (void)impressionOn:(id<CLXAd>)ad {
     NSLog(@"👁️ MREC ad impression recorded");
 }
 
-- (void)didHideWithAd:(id<CloudXAd>)ad {
+- (void)didHideWithAd:(id<CLXAd>)ad {
     NSLog(@"🔚 MREC ad hidden");
 }
 
-- (void)closedByUserActionWithAd:(id<CloudXAd>)ad {
+- (void)closedByUserActionWithAd:(id<CLXAd>)ad {
     NSLog(@"✋ MREC ad closed by user");
 }
 
@@ -807,8 +807,8 @@ MREC ads are 300x250 pixel banner ads that provide more space for rich content.
 
 **Swift:**
 ```swift
-class YourViewController: UIViewController, CloudXBannerDelegate {
-    private var mrecAd: CloudXBannerAdView?
+class YourViewController: UIViewController, CLXBannerDelegate {
+    private var mrecAd: CLXBannerAdView?
     
     func createMRECAd() {
         // Create MREC ad
@@ -835,33 +835,33 @@ class YourViewController: UIViewController, CloudXBannerDelegate {
     }
 }
 
-// MARK: - CloudXBannerDelegate
+// MARK: - CLXBannerDelegate
 extension YourViewController {
-    func didLoad(with ad: CloudXAd) {
+    func didLoad(with ad: CLXAd) {
         print("✅ MREC ad loaded successfully")
     }
     
-    func failToLoad(with ad: CloudXAd, error: Error) {
+    func failToLoad(with ad: CLXAd, error: Error) {
         print("❌ MREC ad failed to load: \(error.localizedDescription)")
     }
     
-    func didShow(with ad: CloudXAd) {
+    func didShow(with ad: CLXAd) {
         print("👀 MREC ad shown")
     }
     
-    func didClick(with ad: CloudXAd) {
+    func didClick(with ad: CLXAd) {
         print("👆 MREC ad clicked")
     }
     
-    func impression(on ad: CloudXAd) {
+    func impression(on ad: CLXAd) {
         print("👁️ MREC ad impression recorded")
     }
     
-    func didHide(with ad: CloudXAd) {
+    func didHide(with ad: CLXAd) {
         print("🔚 MREC ad hidden")
     }
     
-    func closedByUserAction(with ad: CloudXAd) {
+    func closedByUserAction(with ad: CLXAd) {
         print("✋ MREC ad closed by user")
     }
 }
@@ -972,12 +972,12 @@ Here's a complete example showing how to integrate all ad types in a single app:
 #import "MainViewController.h"
 #import <CloudXCore/CloudXCore.h>
 
-@interface MainViewController () <CloudXBannerDelegate, CloudXInterstitialDelegate, CloudXRewardedDelegate, CloudXNativeDelegate>
-@property (nonatomic, strong) CloudXBannerAdView *bannerAd;
-@property (nonatomic, strong) id<CloudXInterstitial> interstitialAd;
-@property (nonatomic, strong) id<CloudXRewardedInterstitial> rewardedAd;
-@property (nonatomic, strong) CloudXNativeAdView *nativeAd;
-@property (nonatomic, strong) CloudXBannerAdView *mrecAd;
+@interface MainViewController () <CLXBannerDelegate, CLXInterstitialDelegate, CLXRewardedDelegate, CLXNativeDelegate>
+@property (nonatomic, strong) CLXBannerAdView *bannerAd;
+@property (nonatomic, strong) id<CLXInterstitial> interstitialAd;
+@property (nonatomic, strong) id<CLXRewardedInterstitial> rewardedAd;
+@property (nonatomic, strong) CLXNativeAdView *nativeAd;
+@property (nonatomic, strong) CLXBannerAdView *mrecAd;
 @end
 
 @implementation MainViewController
@@ -1047,11 +1047,11 @@ import UIKit
 import CloudXCore
 
 class MainViewController: UIViewController {
-    private var bannerAd: CloudXBannerAdView?
-    private var interstitialAd: CloudXInterstitial?
-    private var rewardedAd: CloudXRewardedInterstitial?
-    private var nativeAd: CloudXNativeAdView?
-    private var mrecAd: CloudXBannerAdView?
+    private var bannerAd: CLXBannerAdView?
+    private var interstitialAd: CLXInterstitial?
+    private var rewardedAd: CLXRewardedInterstitial?
+    private var nativeAd: CLXNativeAdView?
+    private var mrecAd: CLXBannerAdView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -1088,7 +1088,7 @@ class MainViewController: UIViewController {
 }
 
 // MARK: - Ad Delegates
-extension MainViewController: CloudXBannerDelegate, CloudXInterstitialDelegate, CloudXRewardedDelegate, CloudXNativeDelegate {
+extension MainViewController: CLXBannerDelegate, CLXInterstitialDelegate, CLXRewardedDelegate, CLXNativeDelegate {
     // Implement delegate methods for each ad type
     // (See individual ad type examples above)
 }
