@@ -68,29 +68,19 @@ pod install --repo-update
 
 ### 1. Import the SDK
 
-<details>
-<summary>Objective-C</summary>
-
+**Objective-C:**
 ```objc
 #import <CloudXCore/CloudXCore.h>
 ```
 
-</details>
-
-<details>
-<summary>Swift</summary>
-
+**Swift:**
 ```swift
 import CloudXCore
 ```
 
-</details>
-
 ### 2. Initialize the SDK
 
-<details>
-<summary>Objective-C</summary>
-
+**Objective-C:**
 ```objc
 // Initialize with app key only
 [[CloudXCore shared] initSDKWithAppKey:@"your-app-key-here" 
@@ -114,11 +104,7 @@ import CloudXCore
 }];
 ```
 
-</details>
-
-<details>
-<summary>Swift</summary>
-
+**Swift:**
 ```swift
 // Initialize with app key only
 CloudXCore.shared.initSDK(withAppKey: "your-app-key-here") { success, error in
@@ -140,29 +126,19 @@ CloudXCore.shared.initSDK(withAppKey: "your-app-key-here",
 }
 ```
 
-</details>
-
 ### 3. Check SDK Status
 
-<details>
-<summary>Objective-C</summary>
-
+**Objective-C:**
 ```objc
 BOOL isInitialized = [[CloudXCore shared] isInitialised];
 NSString *sdkVersion = [[CloudXCore shared] sdkVersion];
 ```
 
-</details>
-
-<details>
-<summary>Swift</summary>
-
+**Swift:**
 ```swift
 let isInitialized = CloudXCore.shared.isInitialised
 let sdkVersion = CloudXCore.shared.sdkVersion
 ```
-
-</details>
 
 ## Ad Integration
 
@@ -170,9 +146,7 @@ let sdkVersion = CloudXCore.shared.sdkVersion
 
 Banner ads are rectangular ads that appear at the top or bottom of the screen.
 
-<details>
-<summary>Objective-C</summary>
-
+**Objective-C:**
 ```objc
 @interface YourViewController () <CLXBannerDelegate>
 @property (nonatomic, strong) CLXBannerAdView *bannerAd;
@@ -238,11 +212,7 @@ Banner ads are rectangular ads that appear at the top or bottom of the screen.
 @end
 ```
 
-</details>
-
-<details>
-<summary>Swift</summary>
-
+**Swift:**
 ```swift
 class YourViewController: UIViewController, CLXBannerDelegate {
     private var bannerAd: CLXBannerAdView?
@@ -304,8 +274,6 @@ extension YourViewController {
     }
 }
 ```
-
-</details>
 
 ### Interstitial Ads
 
@@ -895,9 +863,7 @@ extension YourViewController {
 
 ### User Targeting
 
-<details>
-<summary>Objective-C</summary>
-
+**Objective-C:**
 ```objc
 // Set hashed user ID for targeting
 [[CloudXCore shared] provideUserDetailsWithHashedUserID:@"hashed-user-id"];
@@ -918,11 +884,7 @@ NSDictionary *userData = @{
 [[CloudXCore shared] useBidderKeyValueWithBidder:@"adnetwork" key:@"custom_key" value:@"custom_value"];
 ```
 
-</details>
-
-<details>
-<summary>Swift</summary>
-
+**Swift:**
 ```swift
 // Set hashed user ID for targeting
 CloudXCore.shared.provideUserDetails(withHashedUserID: "hashed-user-id")
@@ -943,10 +905,9 @@ CloudXCore.shared.useKeyValues(withUserDictionary: userData)
 CloudXCore.shared.useBidderKeyValue(withBidder: "adnetwork", key: "custom_key", value: "custom_value")
 ```
 
-</details>
-
 ### Ad Lifecycle Management
 
+**Objective-C:**
 ```objc
 // Check if ad is ready
 BOOL isReady = [self.bannerAd isReady];
@@ -958,6 +919,7 @@ BOOL isReady = [self.bannerAd isReady];
 self.bannerAd.suspendPreloadWhenInvisible = YES;
 ```
 
+**Swift:**
 ```swift
 // Check if ad is ready
 let isReady = bannerAd?.isReady ?? false
@@ -973,6 +935,7 @@ bannerAd?.suspendPreloadWhenInvisible = true
 
 Here's a complete example showing how to integrate all ad types in a single app:
 
+**Objective-C:**
 ```objc
 // AppDelegate.m
 #import "AppDelegate.h"
@@ -1047,6 +1010,7 @@ Here's a complete example showing how to integrate all ad types in a single app:
 @end
 ```
 
+**Swift:**
 ```swift
 // AppDelegate.swift
 import UIKit
@@ -1204,9 +1168,7 @@ All ad types support these common callbacks:
 
 Enable debug logging to troubleshoot issues:
 
-<details>
-<summary>Objective-C</summary>
-
+**Objective-C:**
 ```objc
 // Check SDK logs
 NSDictionary *logs = [[CloudXCore shared] logsData];
@@ -1217,11 +1179,7 @@ NSLog(@"SDK Logs: %@", logs);
 // This enables detailed debug output in release builds
 ```
 
-</details>
-
-<details>
-<summary>Swift</summary>
-
+**Swift:**
 ```swift
 // Check SDK logs
 let logs = CloudXCore.shared.logsData
@@ -1231,8 +1189,6 @@ print("SDK Logs: \(logs)")
 // Set CLOUDX_VERBOSE_LOG=1 in your scheme's environment variables
 // This enables detailed debug output in release builds
 ```
-
-</details>
 
 **Environment Variable Setup:**
 
