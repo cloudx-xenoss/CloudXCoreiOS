@@ -539,6 +539,90 @@ extension YourViewController {
 
 ## Advanced Features
 
+### Privacy Compliance & GPP Integration
+
+The CloudX SDK supports privacy compliance for GDPR, CCPA, and COPPA regulations. Publishers are responsible for obtaining consent through their Consent Management Platform (CMP) and providing the privacy signals to our SDK.
+
+**Objective-C:**
+```objc
+// Set GDPR consent information
+[[NSUserDefaults standardUserDefaults] setObject:@"CPcABcABcABcA..." forKey:@"CLXPrivacyGDPRConsent"];
+[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"CLXPrivacyGDPRApplies"];
+
+// Set CCPA privacy string
+[[NSUserDefaults standardUserDefaults] setObject:@"1YNN" forKey:@"CLXPrivacyCCPAPrivacy"];
+
+// Set COPPA compliance
+[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"CLXPrivacyCOPPAApplies"];
+
+// Optional: Set hashed identifiers for privacy-safe tracking
+[[NSUserDefaults standardUserDefaults] setObject:@"hashed-user-id" forKey:@"hashedUserID"];
+[[NSUserDefaults standardUserDefaults] setObject:@"hashed-geo-ip" forKey:@"CLXPrivacyHashedGeoIp"];
+
+// Synchronize changes
+[[NSUserDefaults standardUserDefaults] synchronize];
+```
+
+**Swift:**
+```swift
+// Set GDPR consent information
+UserDefaults.standard.set("CPcABcABcABcA...", forKey: "CLXPrivacyGDPRConsent")
+UserDefaults.standard.set(true, forKey: "CLXPrivacyGDPRApplies")
+
+// Set CCPA privacy string
+UserDefaults.standard.set("1YNN", forKey: "CLXPrivacyCCPAPrivacy")
+
+// Set COPPA compliance
+UserDefaults.standard.set(true, forKey: "CLXPrivacyCOPPAApplies")
+
+// Optional: Set hashed identifiers for privacy-safe tracking
+UserDefaults.standard.set("hashed-user-id", forKey: "hashedUserID")
+UserDefaults.standard.set("hashed-geo-ip", forKey: "CLXPrivacyHashedGeoIp")
+
+// Synchronize changes
+UserDefaults.standard.synchronize()
+```
+
+#### Privacy Keys Reference
+
+| Key | Type | Description |
+|-----|------|-------------|
+| `CLXPrivacyGDPRConsent` | String | GDPR TC String from your CMP |
+| `CLXPrivacyGDPRApplies` | Boolean | Whether GDPR applies to this user |
+| `CLXPrivacyCCPAPrivacy` | String | CCPA privacy string (e.g., "1YNN") |
+| `CLXPrivacyCOPPAApplies` | Boolean | Whether COPPA applies to this user |
+| `hashedUserID` | String | Hashed user identifier for privacy-safe tracking |
+| `CLXPrivacyHashedGeoIp` | String | Hashed geo IP for privacy-safe tracking |
+
+#### GPP String Integration
+
+If you're using a Global Privacy Platform (GPP) string, you'll need to parse it and extract the individual privacy components before passing them to our SDK:
+
+```objc
+// Example: Parse your GPP string and extract components
+NSString *gppString = @"DBACNYA~CPXxRfAPXxRfAAfKABENB-CgAAAAAAAAAAYgAAAAAAAA~1YNN";
+
+// Your CMP should parse the GPP string and provide:
+NSString *gdprConsent = [yourCMP extractGDPRConsentFromGPP:gppString];
+NSString *ccpaString = [yourCMP extractCCPAStringFromGPP:gppString];
+BOOL gdprApplies = [yourCMP doesGDPRApplyFromGPP:gppString];
+
+// Then set the individual components
+[[NSUserDefaults standardUserDefaults] setObject:gdprConsent forKey:@"CLXPrivacyGDPRConsent"];
+[[NSUserDefaults standardUserDefaults] setObject:ccpaString forKey:@"CLXPrivacyCCPAPrivacy"];
+[[NSUserDefaults standardUserDefaults] setBool:gdprApplies forKey:@"CLXPrivacyGDPRApplies"];
+```
+
+#### Privacy-Aware Ad Serving
+
+The SDK automatically uses privacy information to:
+- Determine when to use hashed identifiers instead of device IFA
+- Respect Do Not Track (DNT) preferences
+- Comply with GDPR, CCPA, and COPPA requirements
+- Provide privacy-safe fallbacks for ad targeting
+
+**Note**: Publishers must obtain proper consent through their own Consent Management Platform before providing privacy signals to the SDK.
+
 ### User Targeting
 
 **Objective-C:**
