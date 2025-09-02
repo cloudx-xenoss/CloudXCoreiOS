@@ -35,8 +35,6 @@ target 'YourApp' do
   
   # Optional: CloudX Adapters (add as needed)
   # pod 'CloudXMetaAdapter'
-  # pod 'CloudXAdManagerAdapter'
-  # pod 'CloudXMintegralAdapter'
   # pod 'CloudXPrebidAdapter'
 end
 ```
