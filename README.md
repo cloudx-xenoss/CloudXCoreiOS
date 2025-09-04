@@ -35,6 +35,8 @@ target 'YourApp' do
   
   # Optional: CloudX Adapters (add as needed)
   # pod 'CloudXMetaAdapter'
+  # pod 'CloudXAdManagerAdapter'
+  # pod 'CloudXMintegralAdapter'
   # pod 'CloudXPrebidAdapter'
 end
 ```
@@ -179,31 +181,31 @@ Banner ads are rectangular ads that appear at the top or bottom of the screen.
 
 #pragma mark - CLXBannerDelegate
 
-- (void)didLoadWithAd:(id<CLXAd>)ad {
+- (void)didLoadWithAd:(CLXAd *)ad {
     NSLog(@"✅ Banner ad loaded successfully");
 }
 
-- (void)failToLoadWithAd:(id<CLXAd>)ad error:(NSError *)error {
+- (void)failToLoadWithAd:(CLXAd *)ad error:(NSError *)error {
     NSLog(@"❌ Banner ad failed to load: %@", error.localizedDescription);
 }
 
-- (void)didShowWithAd:(id<CLXAd>)ad {
+- (void)didShowWithAd:(CLXAd *)ad {
     NSLog(@"👀 Banner ad shown");
 }
 
-- (void)didClickWithAd:(id<CLXAd>)ad {
+- (void)didClickWithAd:(CLXAd *)ad {
     NSLog(@"👆 Banner ad clicked");
 }
 
-- (void)impressionOn:(id<CLXAd>)ad {
+- (void)impressionOn:(CLXAd *)ad {
     NSLog(@"👁️ Banner ad impression recorded");
 }
 
-- (void)didHideWithAd:(id<CLXAd>)ad {
+- (void)didHideWithAd:(CLXAd *)ad {
     NSLog(@"🔚 Banner ad hidden");
 }
 
-- (void)closedByUserActionWithAd:(id<CLXAd>)ad {
+- (void)closedByUserActionWithAd:(CLXAd *)ad {
     NSLog(@"✋ Banner ad closed by user");
 }
 
@@ -305,37 +307,37 @@ Interstitial ads are full-screen ads that appear between app content.
 
 #pragma mark - CLXInterstitialDelegate
 
-- (void)didLoadWithAd:(id<CLXAd>)ad {
+- (void)didLoadWithAd:(CLXAd *)ad {
     NSLog(@"✅ Interstitial ad loaded successfully");
 }
 
-- (void)failToLoadWithAd:(id<CLXAd>)ad error:(NSError *)error {
+- (void)failToLoadWithAd:(CLXAd *)ad error:(NSError *)error {
     NSLog(@"❌ Interstitial ad failed to load: %@", error.localizedDescription);
 }
 
-- (void)didShowWithAd:(id<CLXAd>)ad {
+- (void)didShowWithAd:(CLXAd *)ad {
     NSLog(@"👀 Interstitial ad shown");
 }
 
-- (void)failToShowWithAd:(id<CLXAd>)ad error:(NSError *)error {
+- (void)failToShowWithAd:(CLXAd *)ad error:(NSError *)error {
     NSLog(@"❌ Interstitial ad failed to show: %@", error.localizedDescription);
 }
 
-- (void)didHideWithAd:(id<CLXAd>)ad {
+- (void)didHideWithAd:(CLXAd *)ad {
     NSLog(@"🔚 Interstitial ad hidden");
     // Reload for next use
     [self createInterstitialAd];
 }
 
-- (void)didClickWithAd:(id<CLXAd>)ad {
+- (void)didClickWithAd:(CLXAd *)ad {
     NSLog(@"👆 Interstitial ad clicked");
 }
 
-- (void)impressionOn:(id<CLXAd>)ad {
+- (void)impressionOn:(CLXAd *)ad {
     NSLog(@"👁️ Interstitial ad impression recorded");
 }
 
-- (void)closedByUserActionWithAd:(id<CLXAd>)ad {
+- (void)closedByUserActionWithAd:(CLXAd *)ad {
     NSLog(@"✋ Interstitial ad closed by user");
     // Reload for next use
     [self createInterstitialAd];
@@ -408,6 +410,326 @@ extension YourViewController {
 }
 ```
 
+### Rewarded Ads
+
+Rewarded ads are full-screen ads that provide rewards to users for watching.
+
+```objc
+@interface YourViewController () <CLXRewardedDelegate>
+@property (nonatomic, strong) id<CLXRewardedInterstitial> rewardedAd;
+@end
+
+@implementation YourViewController
+
+- (void)createRewardedAd {
+    // Create rewarded ad
+    self.rewardedAd = [[CloudXCore shared] createRewardedWithPlacement:@"your-rewarded-placement"
+                                                              delegate:self];
+    
+    if (self.rewardedAd) {
+        // Load the ad
+        [self.rewardedAd load];
+    }
+}
+
+- (void)showRewardedAd {
+    if (self.rewardedAd.isReady) {
+        [self.rewardedAd showFromViewController:self];
+    } else {
+        NSLog(@"Rewarded ad not ready");
+    }
+}
+
+#pragma mark - CLXRewardedDelegate
+
+- (void)didLoadWithAd:(CLXAd *)ad {
+    NSLog(@"✅ Rewarded ad loaded successfully");
+}
+
+- (void)failToLoadWithAd:(CLXAd *)ad error:(NSError *)error {
+    NSLog(@"❌ Rewarded ad failed to load: %@", error.localizedDescription);
+}
+
+- (void)didShowWithAd:(CLXAd *)ad {
+    NSLog(@"👀 Rewarded ad shown");
+}
+
+- (void)failToShowWithAd:(CLXAd *)ad error:(NSError *)error {
+    NSLog(@"❌ Rewarded ad failed to show: %@", error.localizedDescription);
+}
+
+- (void)didHideWithAd:(CLXAd *)ad {
+    NSLog(@"🔚 Rewarded ad hidden");
+    // Reload for next use
+    [self createRewardedAd];
+}
+
+- (void)didClickWithAd:(CLXAd *)ad {
+    NSLog(@"👆 Rewarded ad clicked");
+}
+
+- (void)impressionOn:(CLXAd *)ad {
+    NSLog(@"👁️ Rewarded ad impression recorded");
+}
+
+- (void)closedByUserActionWithAd:(CLXAd *)ad {
+    NSLog(@"✋ Rewarded ad closed by user");
+    // Reload for next use
+    [self createRewardedAd];
+}
+
+// Rewarded-specific callbacks
+- (void)userRewarded:(CLXAd *)ad {
+    NSLog(@"🎁 User earned reward!");
+    // Handle reward here
+    [self showRewardDialog];
+}
+
+- (void)rewardedVideoStarted:(CLXAd *)ad {
+    NSLog(@"▶️ Rewarded video started");
+}
+
+- (void)rewardedVideoCompleted:(CLXAd *)ad {
+    NSLog(@"✅ Rewarded video completed");
+}
+
+- (void)showRewardDialog {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Reward Earned!"
+                                                                   message:@"You earned a reward!"
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
+                                                      style:UIAlertActionStyleDefault
+                                                    handler:nil];
+    [alert addAction:okAction];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+@end
+```
+
+```swift
+class YourViewController: UIViewController, CLXRewardedDelegate {
+    private var rewardedAd: CLXRewardedInterstitial?
+    
+    func createRewardedAd() {
+        // Create rewarded ad
+        rewardedAd = CloudXCore.shared.createRewarded(withPlacement: "your-rewarded-placement",
+                                                     delegate: self)
+        
+        if let rewardedAd = rewardedAd {
+            // Load the ad
+            rewardedAd.load()
+        }
+    }
+    
+    func showRewardedAd() {
+        if rewardedAd?.isReady == true {
+            rewardedAd?.show(from: self)
+        } else {
+            print("Rewarded ad not ready")
+        }
+    }
+}
+
+// MARK: - CLXRewardedDelegate
+extension YourViewController {
+    func didLoad(with ad: CLXAd) {
+        print("✅ Rewarded ad loaded successfully")
+    }
+    
+    func failToLoad(with ad: CLXAd, error: Error) {
+        print("❌ Rewarded ad failed to load: \(error.localizedDescription)")
+    }
+    
+    func didShow(with ad: CLXAd) {
+        print("👀 Rewarded ad shown")
+    }
+    
+    func failToShow(with ad: CLXAd, error: Error) {
+        print("❌ Rewarded ad failed to show: \(error.localizedDescription)")
+    }
+    
+    func didHide(with ad: CLXAd) {
+        print("🔚 Rewarded ad hidden")
+        // Reload for next use
+        createRewardedAd()
+    }
+    
+    func didClick(with ad: CLXAd) {
+        print("👆 Rewarded ad clicked")
+    }
+    
+    func impression(on ad: CLXAd) {
+        print("👁️ Rewarded ad impression recorded")
+    }
+    
+    func closedByUserAction(with ad: CLXAd) {
+        print("✋ Rewarded ad closed by user")
+        // Reload for next use
+        createRewardedAd()
+    }
+    
+    // Rewarded-specific callbacks
+    func userRewarded(_ ad: CLXAd) {
+        print("🎁 User earned reward!")
+        // Handle reward here
+        showRewardDialog()
+    }
+    
+    func rewardedVideoStarted(_ ad: CLXAd) {
+        print("▶️ Rewarded video started")
+    }
+    
+    func rewardedVideoCompleted(_ ad: CLXAd) {
+        print("✅ Rewarded video completed")
+    }
+    
+    private func showRewardDialog() {
+        let alert = UIAlertController(title: "Reward Earned!",
+                                    message: "You earned a reward!",
+                                    preferredStyle: .alert)
+        
+        let okAction = UIAlertAction(title: "OK", style: .default)
+        alert.addAction(okAction)
+        present(alert, animated: true)
+    }
+}
+```
+
+### Native Ads
+
+Native ads are designed to match the look and feel of your app's content.
+
+```objc
+@interface YourViewController () <CLXNativeDelegate>
+@property (nonatomic, strong) CLXNativeAdView *nativeAd;
+@end
+
+@implementation YourViewController
+
+- (void)createNativeAd {
+    // Create native ad
+    self.nativeAd = [[CloudXCore shared] createNativeAdWithPlacement:@"your-native-placement"
+                                                    viewController:self
+                                                          delegate:self];
+    
+    if (self.nativeAd) {
+        // Load the ad
+        [self.nativeAd load];
+    }
+}
+
+- (void)showNativeAd {
+    if (self.nativeAd.isReady) {
+        // Add to your view hierarchy
+        self.nativeAd.frame = CGRectMake(0, 0, 300, 200);
+        [self.adContainerView addSubview:self.nativeAd];
+    } else {
+        NSLog(@"Native ad not ready");
+    }
+}
+
+#pragma mark - CLXNativeDelegate
+
+- (void)didLoadWithAd:(CLXAd *)ad {
+    NSLog(@"✅ Native ad loaded successfully");
+}
+
+- (void)failToLoadWithAd:(CLXAd *)ad error:(NSError *)error {
+    NSLog(@"❌ Native ad failed to load: %@", error.localizedDescription);
+}
+
+- (void)didShowWithAd:(CLXAd *)ad {
+    NSLog(@"👀 Native ad shown");
+}
+
+- (void)failToShowWithAd:(CLXAd *)ad error:(NSError *)error {
+    NSLog(@"❌ Native ad failed to show: %@", error.localizedDescription);
+}
+
+- (void)didHideWithAd:(CLXAd *)ad {
+    NSLog(@"🔚 Native ad hidden");
+}
+
+- (void)didClickWithAd:(CLXAd *)ad {
+    NSLog(@"👆 Native ad clicked");
+}
+
+- (void)impressionOn:(CLXAd *)ad {
+    NSLog(@"👁️ Native ad impression recorded");
+}
+
+- (void)closedByUserActionWithAd:(CLXAd *)ad {
+    NSLog(@"✋ Native ad closed by user");
+}
+
+@end
+```
+
+```swift
+class YourViewController: UIViewController, CLXNativeDelegate {
+    private var nativeAd: CLXNativeAdView?
+    
+    func createNativeAd() {
+        // Create native ad
+        nativeAd = CloudXCore.shared.createNativeAd(withPlacement: "your-native-placement",
+                                                   viewController: self,
+                                                   delegate: self)
+        
+        if let nativeAd = nativeAd {
+            // Load the ad
+            nativeAd.load()
+        }
+    }
+    
+    func showNativeAd() {
+        if nativeAd?.isReady == true {
+            // Add to your view hierarchy
+            nativeAd?.frame = CGRect(x: 0, y: 0, width: 300, height: 200)
+            adContainerView.addSubview(nativeAd!)
+        } else {
+            print("Native ad not ready")
+        }
+    }
+}
+
+// MARK: - CLXNativeDelegate
+extension YourViewController {
+    func didLoad(with ad: CLXAd) {
+        print("✅ Native ad loaded successfully")
+    }
+    
+    func failToLoad(with ad: CLXAd, error: Error) {
+        print("❌ Native ad failed to load: \(error.localizedDescription)")
+    }
+    
+    func didShow(with ad: CLXAd) {
+        print("👀 Native ad shown")
+    }
+    
+    func failToShow(with ad: CLXAd, error: Error) {
+        print("❌ Native ad failed to show: \(error.localizedDescription)")
+    }
+    
+    func didHide(with ad: CLXAd) {
+        print("🔚 Native ad hidden")
+    }
+    
+    func didClick(with ad: CLXAd) {
+        print("👆 Native ad clicked")
+    }
+    
+    func impression(on ad: CLXAd) {
+        print("👁️ Native ad impression recorded")
+    }
+    
+    func closedByUserAction(with ad: CLXAd) {
+        print("✋ Native ad closed by user")
+    }
+}
+```
+
 ### MREC Ads (Medium Rectangle)
 
 MREC ads are 300x250 pixel banner ads that provide more space for rich content.
@@ -445,31 +767,31 @@ MREC ads are 300x250 pixel banner ads that provide more space for rich content.
 
 #pragma mark - CLXBannerDelegate
 
-- (void)didLoadWithAd:(id<CLXAd>)ad {
+- (void)didLoadWithAd:(CLXAd *)ad {
     NSLog(@"✅ MREC ad loaded successfully");
 }
 
-- (void)failToLoadWithAd:(id<CLXAd>)ad error:(NSError *)error {
+- (void)failToLoadWithAd:(CLXAd *)ad error:(NSError *)error {
     NSLog(@"❌ MREC ad failed to load: %@", error.localizedDescription);
 }
 
-- (void)didShowWithAd:(id<CLXAd>)ad {
+- (void)didShowWithAd:(CLXAd *)ad {
     NSLog(@"👀 MREC ad shown");
 }
 
-- (void)didClickWithAd:(id<CLXAd>)ad {
+- (void)didClickWithAd:(CLXAd *)ad {
     NSLog(@"👆 MREC ad clicked");
 }
 
-- (void)impressionOn:(id<CLXAd>)ad {
+- (void)impressionOn:(CLXAd *)ad {
     NSLog(@"👁️ MREC ad impression recorded");
 }
 
-- (void)didHideWithAd:(id<CLXAd>)ad {
+- (void)didHideWithAd:(CLXAd *)ad {
     NSLog(@"🔚 MREC ad hidden");
 }
 
-- (void)closedByUserActionWithAd:(id<CLXAd>)ad {
+- (void)closedByUserActionWithAd:(CLXAd *)ad {
     NSLog(@"✋ MREC ad closed by user");
 }
 
